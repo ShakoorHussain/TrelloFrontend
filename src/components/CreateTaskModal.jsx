@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { X } from "lucide-react";
 
-const API_URL = "http://localhost:5000/api/tasks";
+const API_URL = "https://trellobackend-8chn.onrender.com/api/tasks";
 
 const CreateTaskModal = ({ projects, users, onTaskCreated, onClose }) => {
   const [title, setTitle] = useState("");

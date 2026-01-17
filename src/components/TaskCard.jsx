@@ -7,7 +7,7 @@ const TaskCard = ({ task, onStatusChange }) => {
     const token = localStorage.getItem("token");
 
     const res = await axios.patch(
-      `http://localhost:5000/api/tasks/${task._id}`,
+      `https://trellobackend-8chn.onrender.com/api/tasks/${task._id}`,
       { status: newStatus },
       {
         headers: {
