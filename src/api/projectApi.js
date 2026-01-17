@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:5000/api/projects";
+const API_URL = `${process.env.REACT_APP_API_URL || "http://localhost:5000/api"}/projects`;
 
 // GET all projects
 export const getProjects = async () => {
@@ -48,5 +48,3 @@ export const deleteProject = async (projectId) => {
     throw error;
   }
 };
-
-

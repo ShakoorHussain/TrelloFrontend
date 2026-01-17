@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import TaskColumn from "./TaskColumn";
 import { getTasks } from "../api/taskApi";
 import CreateTaskModal from "./CreateTaskModal";
@@ -12,15 +12,15 @@ const TaskBoard = ({ filterProjectId, filterUserId }) => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchTasks = async () => {
+  const fetchTasks = useCallback(async () => {
     const data = await getTasks(filterProjectId, filterUserId);
     setTasks(data);
     setLoading(false);
-  };
+  }, [filterProjectId, filterUserId]);
 
   useEffect(() => {
     fetchTasks();
-  }, [filterProjectId, filterUserId]); // Re-fetch when filters change
+  }, [fetchTasks]); // Now fetchTasks is stable and can be in dependencies
 
   useEffect(() => {
     // fetch projects and users for dropdowns
